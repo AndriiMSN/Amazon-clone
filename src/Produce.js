@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Produce.css'
 import { useStateValue } from './StateProvider'
 
@@ -6,6 +6,7 @@ function Produce({ title, image, price, rating, id }) {
   const [{ basket, subtotal }, dispatch] = useStateValue()
   // console.log(basket);
   const addToBasket = () => {
+
     // dispatch
     dispatch({
       type: "ADD_TO_BASKET",
@@ -18,9 +19,13 @@ function Produce({ title, image, price, rating, id }) {
         image: image
       },
       amount: +price
-
     }
     )
+    dispatch({
+      type: "ITEMS"
+    }
+    )
+
   }
   return (
     <div className="product" id={id}>
@@ -39,7 +44,8 @@ function Produce({ title, image, price, rating, id }) {
         </div>
       </div>
       <img className="product__image" src={image} alt="" />
-      <button onClick={addToBasket}>Add to Basket</button>
+      <button type="button" onClick={addToBasket}>Add to Basket</button>
+      <p>{(basket.find((el) => el.id.match(id))) ? (basket.find((el) => el.id.match(id)).quantity) : 0}</p>
     </div>
   );
 }

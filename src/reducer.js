@@ -1,24 +1,54 @@
 export const initialState = {
   ids: [],
   basket: [],
-  subtotal: 0
+  subtotal: 0,
+  items: 0
 }
-const ids = []
-const reducer = (state, action) => {
-  console.log(state);
+
+const reducer = (state = initialState, action) => {
+
   switch (action.type) {
     case 'ADD_TO_BASKET':
       if (state.ids.indexOf(action.item.id) === -1) {
-        state.ids.push(action.item.id)
         return {
-          ...state,
+          ids: [...state.ids, action.item.id],
           basket: [...state.basket, action.item],
-          subtotal: state.subtotal + action.amount
+          subtotal: state.subtotal + action.amount,
+          items: state.items + 1
         }
       }
-      if (state.ids.indexOf(action.item.id) !== -1) {
-        ++state.basket.find((el) => el.id.match(action.item.id)).quantity;
-        state.subtotal += action.amount
+      else {
+        if (state.basket.length > 0) {
+          // state.basket[state.basket.length - 1].quantity += 1
+          const basketsShallowCopy = [...state.basket];
+          const basketToUpdate = basketsShallowCopy.pop();
+          const updatedBasked = {
+            ...basketToUpdate,
+            quantity: basketToUpdate.quantity + 1,
+          };
+
+          basketsShallowCopy.push(updatedBasked);
+          return {
+            ...state,
+            basket: basketsShallowCopy,
+            subtotal: state.subtotal + action.amount,
+            items: state.items + 1
+          };
+        }
+
+      }
+      return state
+    // }
+    //
+
+    case 'REMOVE_FROM_BASKET':
+      const index = state.ids.findIndex((el) => el.id == action.id)
+      state.ids.splice(index, 1)
+      state.subtotal -= action.price * action.quantity
+      return {
+        ...state,
+        basket: state.basket.filter(el => el.id !== action.id),
+        items: state.items - action.quantity
       }
     default:
       return state;
