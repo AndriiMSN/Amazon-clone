@@ -12,14 +12,14 @@ function Home() {
           <Product
             id="1"
             title="The Lean Startup"
-            price="10"
+            price="10.99"
             rating={5}
             image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
           />
           <Product
             id="2"
             title="Kenwood kMix Stand Mixer for Baking, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Litre Glass Bowl"
-            price="5"
+            price="5.38"
             rating={4}
             image="https://images-na.ssl-images-amazon.com/images/I/91gRKbX%2BS8L._AC_SL1500_.jpg"
           />
@@ -28,14 +28,14 @@ function Home() {
           <Product
             id="3"
             title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor"
-            price={100}
+            price={100.00}
             rating={3}
             image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
           />
           <Product
             id="4"
             title="Amazon Echo (3rd generation) | Smart speaker with Alexa, Charcoal Fabric"
-            price={200}
+            price={199.98}
             rating={5}
             image="https://media.very.co.uk/i/very/P6LTG_SQ1_0000000071_CHARCOAL_SLf?$300x400_retinamobilex2$"
           />

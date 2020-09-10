@@ -22,7 +22,7 @@
 }
 .product__image {
   max-width: 300px;
-  max-height: 200px;
+  max-height: 120px;
   object-fit: contain;
   margin-bottom: 15px;
 }

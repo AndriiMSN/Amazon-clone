@@ -2,15 +2,22 @@ export const initialState = {
   ids: [],
   basket: [],
   subtotal: 0,
-  items: 0
+  items: 0,
+  user: null
 }
 
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
+    case 'SET_USER':
+      return {
+        ...state,
+        user: action.user
+      }
     case 'ADD_TO_BASKET':
       if (state.ids.indexOf(action.item.id) === -1) {
         return {
+          ...state,
           ids: [...state.ids, action.item.id],
           basket: [...state.basket, action.item],
           subtotal: state.subtotal + action.amount,
@@ -38,8 +45,7 @@ const reducer = (state = initialState, action) => {
 
       }
       return state
-    // }
-    //
+
 
     case 'REMOVE_FROM_BASKET':
       const index = state.ids.findIndex((el) => el.id == action.id)
