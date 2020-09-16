@@ -6,6 +6,7 @@ import CheckoutProduct from './CheckoutProduct';
 
 
 export default function Checkout() {
+
   const [{ basket, user }, dispatch] = useStateValue()
 
   return (
