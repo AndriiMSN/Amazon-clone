@@ -14,7 +14,7 @@ import { Elements } from '@stripe/react-stripe-js'
 
 const promise = loadStripe("pk_test_51HQ9rVJsQYpVuO625gJoG4LnbmP0BIQC5YTHdaIRCJMUX3NKgi647hAd5kMDFA26fugLkiVcHNLtmBdXweqDsQrg00DMSbbU8y")
 function App() {
-  const [{ }, dispatch] = useStateValue()
+  const [dispatch] = useStateValue()
   useEffect(() => {
     auth
       .onAuthStateChanged(authUser => {
